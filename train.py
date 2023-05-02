@@ -1,11 +1,10 @@
 import time
 from sklearn.svm import SVC
 import numpy as np
-from sklearn.model_selection import train_test_split
 import pickle
 
-def train(proportion_of_test=0.1, bag_of_words_path="data/generate/bag_of_words.npy",
-          label_path="data/generate/label.npy", save_model_path="data/svm.pickle", save_dataset_path="data/train"):
+def train(proportion_of_test=0.1, bag_of_words_path="data/generate",
+          label_path="data/generate", save_model_path="data/svm.pickle", save_dataset_path="data/train"):
     """
     使用svm模型训练的方法
     :param proportion_of_test:测试集占比
@@ -17,14 +16,12 @@ def train(proportion_of_test=0.1, bag_of_words_path="data/generate/bag_of_words.
     """
     print('开始训练~')
     # 先读取词袋模型数据与标签数据
-    dataset = np.load(bag_of_words_path).astype(np.float32)
-    labelset = np.load(label_path).astype(np.int32)
+    train_data = np.load(bag_of_words_path+'/train_bag_of_words.npy').astype(np.float32)
+    test_data = np.load(bag_of_words_path + '/test_bag_of_words.npy').astype(np.float32)
+    train_label = np.load(label_path+'/train_label.npy').astype(np.int32)
+    test_label= np.load(label_path+'/test_label.npy').astype(np.int32)
     print('读取数据完成~')
 
-    # 先划分测试集与训练集
-    train_data, test_data, train_label, test_label = train_test_split(dataset, labelset, test_size=proportion_of_test,
-                                                                      random_state=0)
-    print('划分测试集与训练集完成~')
 
     # 初始化并设置svm分类器
     svm = SVC(kernel='rbf', C=1000, decision_function_shape='ovo')
