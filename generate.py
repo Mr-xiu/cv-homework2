@@ -74,7 +74,7 @@ class Generate:
 
     def generate_bag_of_words(self, kmeans):
         """
-        创建词袋模型，将SIFT特征转换为特征向量
+        创建词袋模型，将SIFT特征转换为词袋向量
         :param kmeans: 聚类模型
         """
         for data in self.train_data:
