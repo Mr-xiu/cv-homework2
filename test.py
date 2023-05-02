@@ -22,9 +22,6 @@ def test(data_path='15-Scene',model_path="data/svm.pickle", test_data_path="data
     # 读取svm模型
     with open(model_path, 'rb') as f:
         svm = pickle.load(f)
-
-    print(test_data.shape)
-    print(test_label.shape)
     # 进行预测
     pred_label = svm.predict(test_data)
 
