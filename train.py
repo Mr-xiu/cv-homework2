@@ -26,7 +26,7 @@ def train(bag_of_words_path="data/generate/train_bag_of_words.npy",
     start = time.time()
     svm.fit(train_data, train_label)
     end = time.time()
-    print(f'训练完成，共耗时{end - start}s，模型结果与划分的训练集、测试集已保存到磁盘中。')
+    print(f'训练完成，共耗时{end - start}s。')
 
     with open(save_model_path, 'wb') as f:
         pickle.dump(svm, f)
