@@ -5,7 +5,7 @@ from matplotlib import pyplot as plt
 import seaborn as sns
 import pickle
 from sklearn.metrics import classification_report, confusion_matrix
-def test(data_path='15-Scene',model_path="data/svm.pickle", test_data_path="data/train/test_data.npy", test_label_path="data/train/test_label.npy", conf_matrix_path="data/cnf_matrix.png"):
+def test(data_path='15-Scene',model_path="data/svm.pickle", test_data_path="data/generate/test_bag_of_words.npy", test_label_path="data/generate/test_label.npy", conf_matrix_path="data/cnf_matrix.png"):
     """
     根据训练得到的svm模型在测试集上测试并生成混淆矩阵的方法
     :param data_path:数据集的根目录
